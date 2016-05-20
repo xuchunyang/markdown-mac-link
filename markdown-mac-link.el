@@ -14,7 +14,7 @@
 ;;      Mike McLean <mike.mclean@pobox.com>
 
 ;; Author: Chunyang Xu <xuchunyang.me@gmail.com>
-;; URL: https://github.com/xuchunyang/markdown-mac-link.el
+;; URL: https://github.com/xuchunyang/markdown-mac-link
 ;; Version: 0.1
 ;; Package-Requires: ((emacs "24"))
 ;; Keywords: Markdown, mac, hyperlink
