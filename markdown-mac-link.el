@@ -162,12 +162,19 @@
   "Prompt for an application to grab a link from.
 When done, go grab the link, and insert it at point."
   (interactive)
-  (let ((choice
-         (read-multiple-choice "Grab link from"
-                               '((?c "chrome" markdown-mac-link-chrome-insert-frontmost-url)
-                                 (?s "safari" markdown-mac-link-safari-insert-frontmost-url)
-                                 (?f "finder" markdown-mac-link-finder-insert-selected)))))
-    (call-interactively (nth 2 choice))))
+  (let ((descriptors
+         '((?c . markdown-mac-link-chrome-insert-frontmost-url)
+           (?s . markdown-mac-link-safari-insert-frontmost-url)
+           (?f . markdown-mac-link-finder-insert-selected)))
+        (menu-string "[c]hrome [s]afari [f]inder:" )
+        input)
+
+    (message menu-string)
+    (setq input (read-char-exclusive))
+
+    (let ((grab-function (cdr (assq input descriptors))))
+      (when grab-function
+        (call-interactively grab-function)))))
 
 (provide 'markdown-mac-link)
 ;;; markdown-mac-link.el ends here
